@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AI辅助智能垃圾分类与资源回收系统，提供垃圾分类查询、知识科普、互动挑战和资源化建议。">
+  <meta name="theme-color" content="#f4f8f3">
+  <title>绿循 · AI智能垃圾分类与资源回收系统</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="site-shell">
+    <header class="topbar">
+      <a class="brand" href="#home" aria-label="绿循首页">
+        <span class="brand-mark">♻</span>
+        <span><strong>绿循</strong><small>GREEN CYCLE · AI SORTING</small></span>
+      </a>
+      <nav class="nav-links" aria-label="主导航">
+        <a href="#classify">智能分类</a>
+        <a href="#guide">分类指南</a>
+        <a href="#challenge">知识挑战</a>
+        <a href="#about">项目说明</a>
+      </nav>
+      <a class="top-cta" href="#classify">开始体验 <span>↗</span></a>
+    </header>
+
+    <main id="home">
+      <section class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="pulse"></span> RESOURCE & ENVIRONMENT · DIGITAL PRACTICE</div>
+          <h1>让每一份废弃物<br><em>找到新的价值。</em></h1>
+          <p class="hero-lead">以轻量化文本智能分类为入口，连接垃圾分类知识、规范投放与资源循环利用，让环保行动更简单、更清晰。</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#classify">立即分类 <span>→</span></a>
+            <a class="text-link" href="#guide">了解四分类原则 <span>↗</span></a>
+          </div>
+          <div class="hero-note"><span class="note-icon">✳</span> 分类有依据 · 投放有方法 · 资源可循环</div>
+        </div>
+        <div class="hero-art" aria-label="四类垃圾分类桶的插画">
+          <div class="art-orbit orbit-one"></div><div class="art-orbit orbit-two"></div>
+          <div class="sun-disc"></div>
+          <div class="leaf leaf-a">✦</div><div class="leaf leaf-b">✧</div>
+          <div class="art-ground"></div>
+          <div class="bin bin-blue"><div class="bin-lid"></div><div class="bin-body"><span>♻</span><small>RECYCLE</small></div><b>可回收物</b></div>
+          <div class="bin bin-green"><div class="bin-lid"></div><div class="bin-body"><span>❀</span><small>KITCHEN</small></div><b>厨余垃圾</b></div>
+          <div class="bin bin-red"><div class="bin-lid"></div><div class="bin-body"><span>!</span><small>HAZARDOUS</small></div><b>有害垃圾</b></div>
+          <div class="bin bin-gray"><div class="bin-lid"></div><div class="bin-body"><span>＋</span><small>OTHER</small></div><b>其他垃圾</b></div>
+          <div class="art-caption">SORT RIGHT, LIVE LIGHT.</div>
+        </div>
+      </section>
+
+      <section class="metrics" aria-label="平台概览">
+        <div class="metric-card"><span class="metric-icon mint">⌕</span><div><strong id="queryCount">0</strong><small>累计查询次数</small></div><span class="metric-foot">本地记录</span></div>
+        <div class="metric-card"><span class="metric-icon blue">▦</span><div><strong>4 <i>类</i></strong><small>生活垃圾分类体系</small></div><span class="metric-foot">分类指南</span></div>
+        <div class="metric-card"><span class="metric-icon peach">✳</span><div><strong id="knowledgeCount">40+</strong><small>内置常见物品样例</small></div><span class="metric-foot">知识库</span></div>
+        <div class="metric-card"><span class="metric-icon lavender">⌁</span><div><strong>NB</strong><small>轻量文本分类模型</small></div><span class="metric-foot">浏览器本地运行</span></div>
+      </section>
+
+      <section class="section classify-section" id="classify">
+        <div class="section-heading">
+          <div><div class="eyebrow">01 / SMART CLASSIFICATION</div><h2>这件垃圾，应该去哪里？</h2></div>
+          <p>输入物品名称，系统将结合分类规则与朴素贝叶斯文本模型给出建议。</p>
+        </div>
+        <div class="classifier-panel">
+          <div class="search-area">
+            <label for="wasteInput">输入生活中常见的废弃物</label>
+            <div class="search-row">
+              <span class="search-symbol">⌕</span>
+              <input id="wasteInput" type="text" maxlength="40" placeholder="例如：喝完的塑料矿泉水瓶、废旧电池……" autocomplete="off">
+              <button id="classifyBtn" class="button button-primary">智能识别 <span>→</span></button>
+            </div>
+            <div class="quick-examples"><span>试试：</span><button class="chip" data-example="奶茶杯">奶茶杯</button><button class="chip" data-example="废旧电池">废旧电池</button><button class="chip" data-example="苹果果核">苹果果核</button><button class="chip" data-example="快递纸箱">快递纸箱</button></div>
+            <p class="input-hint" id="inputHint" aria-live="polite">提示：尽量输入具体物品名称；组合物品可拆分后分别查询。</p>
+          </div>
+          <div class="result-area" id="resultArea">
+            <div class="result-empty">
+              <div class="empty-illustration">✳</div>
+              <strong>等待你的第一次查询</strong>
+              <span>分类结果、投放建议和判断依据将在这里呈现。</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="guide">
+        <div class="section-heading">
+          <div><div class="eyebrow">02 / SORTING GUIDE</div><h2>认识生活垃圾四分类</h2></div>
+          <p>分类投放是资源回收利用与末端无害化处理的重要前提。</p>
+        </div>
+        <div class="category-grid">
+          <article class="category-card recyclable">
+            <div class="category-top"><span class="category-symbol">↻</span><span class="category-no">01 / BLUE</span></div>
+            <h3>可回收物</h3><p class="category-en">RECYCLABLE WASTE</p>
+            <p>适宜回收利用和资源化利用的生活废弃物，保持清洁、干燥有助于提高回收质量。</p>
+            <div class="examples"><b>常见例子</b><span>纸箱、报纸、塑料瓶、玻璃瓶、金属罐、旧衣物</span></div>
+            <div class="disposal">投放建议：尽量清空内容物、压扁纸箱，按当地要求分类投放。</div>
+          </article>
+          <article class="category-card kitchen">
+            <div class="category-top"><span class="category-symbol">❀</span><span class="category-no">02 / GREEN</span></div>
+            <h3>厨余垃圾</h3><p class="category-en">FOOD WASTE</p>
+            <p>易腐烂的、含有机质的生活废弃物，可通过厌氧消化、堆肥等方式资源化利用。</p>
+            <div class="examples"><b>常见例子</b><span>剩饭剩菜、果皮、菜叶、茶渣、蛋壳</span></div>
+            <div class="disposal">投放建议：沥干水分，去除包装物；大骨、贝壳等按当地细则处理。</div>
+          </article>
+          <article class="category-card hazardous">
+            <div class="category-top"><span class="category-symbol">!</span><span class="category-no">03 / RED</span></div>
+            <h3>有害垃圾</h3><p class="category-en">HAZARDOUS WASTE</p>
+            <p>对人体健康或自然环境造成直接或潜在危害的废弃物，需要分类收集和安全处置。</p>
+            <div class="examples"><b>常见例子</b><span>废电池、过期药品、废荧光灯管、废油漆桶</span></div>
+            <div class="disposal">投放建议：轻放防破损，避免混入其他垃圾，交由规范渠道处理。</div>
+          </article>
+          <article class="category-card other">
+            <div class="category-top"><span class="category-symbol">＋</span><span class="category-no">04 / GREY</span></div>
+            <h3>其他垃圾</h3><p class="category-en">RESIDUAL WASTE</p>
+            <p>除可回收物、有害垃圾、厨余垃圾以外的其他生活废弃物，通常进入焚烧或卫生填埋等处理环节。</p>
+            <div class="examples"><b>常见例子</b><span>污染纸巾、尿不湿、烟蒂、陶瓷碎片、尘土</span></div>
+            <div class="disposal">投放建议：尽量沥干水分，注意尖锐物品包装，避免造成二次伤害。</div>
+          </article>
+        </div>
+        <div class="local-rule"><span>ⓘ</span><div><strong>分类提示</strong><p>生活垃圾分类目录和具体投放要求可能因城市而异。本系统提供通用学习参考，实际投放请以所在地最新生活垃圾分类管理规定及投放点标识为准。</p></div></div>
+      </section>
+
+      <section class="section challenge-section" id="challenge">
+        <div class="section-heading">
+          <div><div class="eyebrow">03 / KNOWLEDGE CHALLENGE</div><h2>一分钟分类小挑战</h2></div>
+          <p>用几个生活场景检验分类知识，把正确分类变成日常习惯。</p>
+        </div>
+        <div class="quiz-panel">
+          <div class="quiz-side"><div class="quiz-badge">♻</div><div class="eyebrow">LEARN BY DOING</div><h3>分类不止于知道，<br>更在于正确行动。</h3><p>完成 5 道随机顺序的生活垃圾分类题，看看你的分类知识掌握得怎么样。</p><div class="quiz-progress"><span id="quizProgress"></span></div><small id="quizStep">准备开始 · 共 5 题</small></div>
+          <div class="quiz-main" id="quizMain">
+            <div class="quiz-start"><span class="quiz-start-icon">✦</span><h3>准备好接受挑战了吗？</h3><p>每题选择一个分类，提交后即可查看答案与解释。</p><button class="button button-primary" id="startQuiz">开始挑战 <span>→</span></button></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section impact-section">
+        <div class="impact-copy"><div class="eyebrow">04 / RESOURCE CIRCULARITY</div><h2>分类的终点，<br><em>是资源的下一站。</em></h2><p>垃圾分类不仅是投放行为，更是连接源头减量、分类收集、资源回收和末端处理的系统工程。</p><div class="impact-note">减少混投 · 提高纯度 · 促进循环</div></div>
+        <div class="flow-card">
+          <div class="flow-step"><span>01</span><div><b>源头分类</b><small>按类别正确投放</small></div><i>⌂</i></div>
+          <div class="flow-line"></div>
+          <div class="flow-step"><span>02</span><div><b>分类收运</b><small>分类收集与规范运输</small></div><i>⇢</i></div>
+          <div class="flow-line"></div>
+          <div class="flow-step"><span>03</span><div><b>资源化 / 无害化处理</b><small>再生利用、生化处理、安全处置</small></div><i>♻</i></div>
+          <div class="flow-line"></div>
+          <div class="flow-step flow-end"><span>04</span><div><b>循环利用</b><small>减少原生资源消耗与环境负荷</small></div><i>✧</i></div>
+        </div>
+      </section>
+
+      <section class="section about-section" id="about">
+        <div class="about-card">
+          <div><div class="eyebrow">05 / ABOUT THIS PROJECT</div><h2>让技术服务于<br>可持续的日常。</h2><p>本项目面向生活垃圾分类科普与教学演示场景，构建“文本输入—智能匹配—分类反馈—知识学习”的轻量化交互流程。</p></div>
+          <div class="about-details">
+            <div><b>算法思路</b><span>同义词归一化 + 规则优先 + 多项式朴素贝叶斯文本分类</span></div>
+            <div><b>运行方式</b><span>纯前端浏览器运行，无需后端服务或用户账号</span></div>
+            <div><b>数据说明</b><span>内置教学样例与通用分类知识，查询记录保存在本地浏览器</span></div>
+            <div><b>适用边界</b><span>原型系统，不替代专业鉴定与地方主管部门发布的分类目录</span></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <a class="brand footer-brand" href="#home"><span class="brand-mark">♻</span><span><strong>绿循</strong><small>GREEN CYCLE</small></span></a>
+      <span>AI 辅助垃圾分类与资源回收 · 课程实践作品</span>
+      <a href="#home">返回顶部 ↑</a>
+    </footer>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
