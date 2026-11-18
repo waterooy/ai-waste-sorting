@@ -152,6 +152,9 @@ function startQuiz(){
   renderQuestion();
 }
 function renderQuestion(){
+  // 每次进入新题目时重置作答状态，避免第二题及后续题目无法选择。
+  quizState.selected = null;
+  quizState.answered = false;
   const q=quizState.questions[quizState.index];
   const main=document.getElementById("quizMain");
   document.getElementById("quizProgress").style.width=(quizState.index/5*100)+"%";
